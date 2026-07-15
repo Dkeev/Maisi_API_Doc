@@ -1,4 +1,4 @@
-# Maisi API Doc - 部署文档
+﻿# Modex API Doc - 部署文档
 
 ## 项目结构
 
@@ -7,7 +7,7 @@
 │   └── docker-publish.yml    # GitHub Actions 自动构建镜像
 ├── src/
 │   ├── .vitepress/
-│   │   ├── config.ts          # VitePress 配置（导航、侧边栏、外部链接）
+│   │   ├── config.mts         # VitePress 配置（导航、侧边栏、外部链接）
 │   │   └── theme/
 │   │       ├── index.ts       # 主题入口
 │   │       └── style.css      # 自定义样式（品牌色、背景色）
@@ -28,7 +28,7 @@
 
 ### 外部链接配置
 
-编辑 `src/.vitepress/config.ts`，修改 `nav` 中的链接：
+编辑 `src/.vitepress/config.mts`，修改 `nav` 中的链接：
 
 ```ts
 nav: [
@@ -36,10 +36,10 @@ nav: [
   { text: '集成教程', link: '/integration/' },
   {
     text: 'API 文档',
-    link: 'https://api-docs.maisi-ai.com/',  // ← 改为你的 Apifox 文档地址
+    link: 'https://api-docs.modex-ai.com/',  // ← 改为你的 Apifox 文档地址
     target: '_blank',
   },
-  { text: '官网', link: 'https://maisi-ai.com/', target: '_blank' },
+  { text: '官网', link: 'https://modex-ai.com/', target: '_blank' },
 ],
 ```
 
@@ -52,10 +52,10 @@ hero:
   actions:
     - theme: brand
       text: 官网
-      link: https://maisi-ai.com/         # ← 官网地址
+      link: https://modex-ai.com/         # ← 官网地址
     - theme: alt
       text: API 开发文档
-      link: https://api-docs.maisi-ai.com/ # ← Apifox 文档地址
+      link: https://api-docs.modex-ai.com/ # ← Apifox 文档地址
 ```
 
 ### API 地址配置
@@ -64,16 +64,16 @@ hero:
 
 ```bash
 # 如需更换 API 域名，在 src 目录下执行：
-find src -name "*.md" -exec sed -i 's|maisi-ai.com|your-new-api.com|g' {} \;
+find src -name "*.md" -exec sed -i 's|modex-ai.com|your-new-api.com|g' {} \;
 ```
 
 当前使用的 API 地址：
-- 主站节点：`https://maisi-ai.com`
-- 大陆优化：`https://api.maisi-ai.com`
+- 主站节点：`https://modex-ai.com`
+- 大陆优化：`https://api.modex-ai.com`
 
 ### Logo 配置
 
-将 logo 文件放到 `src/public/logo.svg`，config.ts 已配置引用该路径。
+将 logo 文件放到 `src/public/logo.svg`，config.mts 已配置引用该路径。
 
 ---
 
@@ -97,14 +97,14 @@ npm run preview   # 预览构建结果
 2. 在服务器上创建部署目录：
 
 ```bash
-mkdir -p /opt/maisi-docs && cd /opt/maisi-docs
+mkdir -p /opt/Modex-docs && cd /opt/Modex-docs
 ```
 
 3. 创建 `.env` 文件：
 
 ```bash
 # GitHub 仓库名（小写），格式: owner/repo
-GITHUB_REPO=your-org/maisi-api-doc
+GITHUB_REPO=your-org/Modex-api-doc
 
 # 镜像标签
 IMAGE_TAG=latest
@@ -119,7 +119,7 @@ DOCS_PORT=3000
 services:
   docs:
     image: ghcr.io/${GITHUB_REPO}:${IMAGE_TAG}
-    container_name: maisi-docs
+    container_name: Modex-docs
     restart: unless-stopped
     ports:
       - "${DOCS_PORT}:80"
@@ -144,8 +144,8 @@ docker compose logs -f
 
 ```bash
 # 在项目根目录
-docker build -t maisi-docs .
-docker run -d --name maisi-docs -p 3000:80 maisi-docs
+docker build -t Modex-docs .
+docker run -d --name Modex-docs -p 3000:80 Modex-docs
 ```
 
 ---
@@ -184,7 +184,7 @@ ghcr.io/<owner>/<repo>:<version>
 4. 服务器上更新：
 
 ```bash
-cd /opt/maisi-docs
+cd /opt/Modex-docs
 docker compose pull
 docker compose up -d
 ```
@@ -198,7 +198,7 @@ docker compose up -d
 ```nginx
 server {
     listen 443 ssl;
-    server_name docs.maisi-ai.com;
+    server_name docs.modex-ai.com;
 
     ssl_certificate     /path/to/cert.pem;
     ssl_certificate_key /path/to/key.pem;

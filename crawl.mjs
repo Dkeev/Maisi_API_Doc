@@ -1,4 +1,4 @@
-import { load } from 'cheerio';
+﻿import { load } from 'cheerio';
 import TurndownService from 'turndown';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
@@ -108,13 +108,13 @@ td.addRule('removeHidden', {
 
 function brandReplace(text) {
   return text
-    .replace(/UniAPI/g, 'Maisi')
-    .replace(/uniapi\.ai/g, 'maisi-ai.com')
-    .replace(/uniapi\.io/g, 'maisi-ai.com')
-    .replace(/uniapi/gi, 'maisi')
-    .replace(/api\.maisi-ai\.com/g, 'maisi-ai.com')
-    .replace(/hk\.maisi-ai\.com/g, 'api.maisi-ai.com')
-    .replace(/docs\.maisi-ai\.com/g, 'docs.maisi-ai.com');
+    .replace(/UniAPI/g, 'Modex')
+    .replace(/uniapi\.ai/g, 'modex-ai.com')
+    .replace(/uniapi\.io/g, 'modex-ai.com')
+    .replace(/uniapi/gi, 'Modex')
+    .replace(/api\.modex-ai\.com/g, 'modex-ai.com')
+    .replace(/hk\.modex-ai\.com/g, 'api.modex-ai.com')
+    .replace(/docs\.modex-ai\.com/g, 'docs.modex-ai.com');
 }
 
 async function crawlPage(pageInfo) {
@@ -160,7 +160,7 @@ async function crawlPage(pageInfo) {
 
 function extractHomepage($) {
   // Build a VitePress homepage frontmatter from the hero section
-  const heroTitle = $('.VPHero .name').text().trim() || 'Maisi';
+  const heroTitle = $('.VPHero .name').text().trim() || 'Modex';
   const heroTagline = $('.VPHero .tagline').text().trim() || '';
   const heroText = $('.VPHero .text').text().trim() || '';
 

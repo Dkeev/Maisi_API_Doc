@@ -1,7 +1,7 @@
-services:
+﻿services:
   docs:
-    image: ghcr.io/${GITHUB_REPO:-your-org/maisi-api-doc}:${IMAGE_TAG:-latest}
-    container_name: maisi-docs
+    image: ghcr.io/${GITHUB_REPO:-your-org/Modex-api-doc}:${IMAGE_TAG:-latest}
+    container_name: Modex-docs
     restart: unless-stopped
     ports:
       - "${DOCS_PORT:-3000}:80"
